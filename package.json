@@ -1,0 +1,50 @@
+{
+  "name": "promise-not-if-busy",
+  "version": "1.0.0",
+  "description": "Wrap a function so if called multiple times, only one call runs simultaneously",
+  "keywords": [
+    "busy",
+    "concurrent",
+    "debounce",
+    "limit",
+    "only one",
+    "promise",
+    "throttle"
+  ],
+  "license": "MIT",
+  "author": "Gabriel Montes <gabriel@bloq.com>",
+  "files": [
+    "src"
+  ],
+  "main": "src/index.js",
+  "repository": "autonomoussoftware/promise-not-if-busy",
+  "scripts": {
+    "check": "dependency-check . && dependency-check . --unused --no-dev",
+    "check:outdated": "npm-check -i husky",
+    "coverage": "nyc --lines 95 --functions 95 --branches 95 --reporter=lcov --reporter=text npm test",
+    "lint": "eslint --cache .",
+    "precommit": "npm run lint",
+    "prepublishOnly": "npm run precommit && npm run prepush && tag-matches",
+    "prepush": "npm run check && npm run coverage",
+    "test": "mocha"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "check-tag-matches": "^1.0.0",
+    "dependency-check": "^3.3.0",
+    "eslint": "^5.14.1",
+    "eslint-config-bloq": "^2.0.0",
+    "eslint-config-standard": "^12.0.0",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsdoc": "^4.1.0",
+    "eslint-plugin-mocha": "^5.3.0",
+    "eslint-plugin-node": "^8.0.1",
+    "eslint-plugin-promise": "^4.0.1",
+    "eslint-plugin-standard": "^4.0.0",
+    "husky": "^1.3.1",
+    "mocha": "^6.0.1",
+    "npm-check": "^5.9.0",
+    "nyc": "^13.3.0",
+    "sinon": "^7.2.4"
+  }
+}

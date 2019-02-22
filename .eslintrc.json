@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "bloq"
+  ],
+  "root": true,
+  "rules": {
+    "promise/catch-or-return": ["error", { "allowThen": true }],
+    "require-jsdoc": "warn"
+  }
+}
