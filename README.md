@@ -1,6 +1,6 @@
 # promise-not-if-busy
 
-[![Build Status](https://travis-ci.com/autonomoussoftware/promise-not-if-busy.svg?branch=master)](https://travis-ci.com/autonomoussoftware/promise-not-if-busy)
+[![Build Status](https://travis-ci.com/autonomoussoftware/promise-not-if-busy.svg?branch=master)](https://travis-ci.com/autonomoussoftware/promise-not-if-busy) [![Greenkeeper badge](https://badges.greenkeeper.io/autonomoussoftware/promise-not-if-busy.svg)](https://greenkeeper.io/)
 
 Wrap a function so if called multiple times, only one call runs simultaneously.
 
