@@ -1,0 +1,8 @@
+{
+  "all": true,
+  "branches": 95,
+  "functions": 95,
+  "include": ["src/**/*.js"],
+  "lines": 95,
+  "reporter": ["lcov", "text"]
+}

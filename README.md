@@ -1,37 +1,42 @@
-# promise-not-if-busy
+# promise-limit-one
 
-[![Build Status](https://travis-ci.com/autonomoussoftware/promise-not-if-busy.svg?branch=master)](https://travis-ci.com/autonomoussoftware/promise-not-if-busy)
+[![Build Status](https://travis-ci.com/autonomoussoftware/promise-limit-one.svg?branch=master)](https://travis-ci.com/autonomoussoftware/promise-limit-one)
 
 Wrap a function so if called multiple times, only one call runs simultaneously.
 
 ## Installation
 
 ```shell
-npm install promise-not-if-busy
+npm install promise-limit-one
 ```
 
 ## Usage
 
 ```js
-const notIfBusy = require('promise-not-if-busy')
+const limitOne = require('promise-limit-one')
 
-const wrapped = notIfBusy(longOperation)
+const longOperation = () => new Promise(function (resolve) {
+  console.log('Executing a long operation...')
+  setTimeout(resolve, 100)
+})
 
-wrapped() // will call `longOperation` and resolve to the call's results
+const wrapped = limitOne(longOperation)
 
-wrapped() // will not call `longOperation` as it will take long to finish but will resolve to previous call results instead
+wrapped() // will print "Executing..."
+wrapped() // will do nothing
 
-// after `longOperation` ends...
-
-wrapped() // will call `longOperation` again and resolve to this call's results
+setTimeout(function () {
+  wrapped() // will print "Executing..." again
+}, 150)
 ```
 
 ## API
 
-### `notIfBusy(fn)`
+### `limitOne(fn, err)`
 
-Creates a function that when called multiple times will call ´fn´ and wait for it to
-finish before calling it again. 
+Creates a function that when called multiple times will call `fn` and wait for it to finish before calling `fn` again. 
+
+If `err` is supplied and the function is running, any new call will reject with `err`.
 
 #### Params
 
@@ -43,7 +48,6 @@ Function that returns a promise.
 A function that wraps `fn` up.
 It will return a promise that will resolve to the result of calling `fn`.
 While `fn` is busy, it will resolve to the pending promise.
-
 
 ## License
 
