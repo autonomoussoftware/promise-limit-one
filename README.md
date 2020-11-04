@@ -4,6 +4,8 @@
 
 Wrap a function so if called multiple times, only one call runs simultaneously.
 
+*Note*: This package replaces `promise-not-if-busy`, which is now deprecated.
+
 ## Installation
 
 ```shell
